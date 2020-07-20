@@ -1,0 +1,130 @@
+<hmtl>
+
+    <head>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .fundo {
+                background: linear-gradient(to right, rgb(255, 254, 254), rgb(2, 139, 252));
+                height: 100%;
+            }
+            
+            .cal {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                box-shadow: 10px 0px 40px rgb(0, 0, 0);
+            }
+            
+            .button {
+                width: 50px;
+                height: 50px;
+                font-size: 25;
+                margin: 2px;
+                cursor: pointer;
+                background: #8071c49f;
+                color: white;
+                border: none;
+            }
+            
+            input.button:hover {
+                background: #6042e29f;
+            }
+            
+            .textview {
+                width: 217px;
+                height: 40px;
+                margin: 5px;
+                font-size: 25px;
+                padding: 5px;
+                border: none;
+                color: #000000;
+            }
+            
+            #igual {
+                height: 107px;
+            }
+            
+            #numero0 {
+                width: 107px;
+            }
+        </style>
+
+        <title>
+            Calculadora
+        </title>
+    </head>
+
+    <body>
+        <div class="fundo">
+            <div class="cal">
+                <form name="cx">
+                    <input class="textview" name="textview">
+
+                    <table>
+                        <tr>
+                            <td><input class="button" type="button" value="C" onclick="clean()"></td>
+                            <td><input class="button" type="button" value="+" onclick="insert('+')"></td>
+                            <td><input class="button" type="button" value="-" onclick="insert('-')"></td>
+                            <td><input class="button" type="button" value="X" onclick="insert('*')"></td>
+
+                        </tr>
+                        <tr>
+                            <td><input class="button" type="button" value="1" onclick="insert(1)"></td>
+                            <td><input class="button" type="button" value="2" onclick="insert(2)"></td>
+                            <td><input class="button" type="button" value="3" onclick="insert(3)"></td>
+                            <td><input class="button" type="button" value="/" onclick="insert('/')"></td>
+
+
+                        </tr>
+                        <tr>
+                            <td><input class="button" type="button" value="4" onclick="insert(4)"></td>
+                            <td><input class="button" type="button" value="5" onclick="insert(5)"></td>
+                            <td><input class="button" type="button" value="6" onclick="insert(6)"></td>
+                            <td><input class="button" type="button" value="<" onclick="back()"></td>
+                        </tr>
+                        <tr>
+                            <td><input class="button" type="button" value="7" onclick="insert(7)"></td>
+                            <td><input class="button" type="button" value="8" onclick="insert(8)"></td>
+                            <td><input class="button" type="button" value="9" onclick="insert(9)"></td>
+                            <td rowspan="5"><input class="button" id="igual" type="button" value="=" onclick="equal()"></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input class="button" id="Numero0" type="button" value="0" onclick="insert(0)">
+                            </td>
+                            <td><input class="button" type="button" value="." onclick="insert('.')"></td>
+
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+        </div>
+        <script>
+            function insert(num) {
+                document.cx.textview.value = document.cx.textview.value + num;
+            }
+
+            function equal() {
+                var exp = document.cx.textview.value;
+                if (exp) {
+                    document.cx.textview.value = eval(exp);
+                }
+            }
+
+            function clean() {
+                document.cx.textview.value = "";
+            }
+
+            function back() {
+                var exp = document.cx.textview.value;
+                document.cx.textview.value = exp.substr(0, exp.length - 1);
+            }
+        </script>
+    </body>
+</hmtl>
